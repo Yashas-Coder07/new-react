@@ -2,8 +2,8 @@
 import './App.css';
 import ExpenseItem from './components/ExpsenseItems';
 import React from 'react';
-
-function App() {
+import Card from '../UI/Card';
+const App = () => {
   const expense = [
     {
       title: "Toilet paper",
@@ -23,17 +23,17 @@ function App() {
       date: new Date(2021, 3, 12),
       Location: "Grocery Shop"
     }]
+
   return (
-    <div>
-      <h2>
-        Lets get started
-      </h2>
+    <Card className='expenses'>
 
       {expense.map(index => (
-        <ExpenseItem title={index.title} amount={index.amount} date={index.date} Location={index.Location}></ExpenseItem>
+
+        <ExpenseItem title={index.title} amount={index.amount} date={index.date} Location={index.Location} />
+
       ))}
 
-    </div>
+    </Card>
   );
 }
 
