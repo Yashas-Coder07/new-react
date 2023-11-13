@@ -1,6 +1,7 @@
 
 import './App.css';
 import ExpenseItem from './components/Expenses/ExpenseItems';
+import ExpenseForm from './components/NewExpense/ExpenseForms';
 import React from 'react';
 import Card from './components/UI/Cards';
 const App = () => {
@@ -26,7 +27,7 @@ const App = () => {
 
   return (
     <Card className='expenses'>
-
+      <ExpenseForm />
       {expense.map(index => (
 
         <ExpenseItem title={index.title} amount={index.amount} date={index.date} Location={index.Location} />
