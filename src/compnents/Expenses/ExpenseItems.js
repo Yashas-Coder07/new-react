@@ -13,18 +13,13 @@ function ExpenseItem(props) {
         console.log(title);
     };
 
-    const [amount, setAmount] = useState(props.amount);
-
-    const updateExpense = () => {
-        setAmount(100);
-    }
 
     return (
         <Card className='expense-item'>
             <ExpenseDate date={props.date} />
-            <ExpenseDetails title={title} amount={amount} Location={props.Location} />
+            <ExpenseDetails title={title} amount={props.amount} Location={props.Location} />
             <button onClick={deleteElement}>Delete Expense</button>
-            <button onClick={updateExpense}>Update Expense</button>
+
         </Card>
     );
 
