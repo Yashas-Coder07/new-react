@@ -1,58 +1,42 @@
+import React from 'react';
 
-import './App.css';
-import ExpenseItem from './component/Expenses/ExpenseItems';
-import ExpenseForm from './component/NewExpenses/ExpenseForms';
-import React, { useState } from 'react';
-import Card from './component/UI/Cards';
-const Intial_Expenses = [
-  {
-    id: 'e1',
-    title: "Toilet paper",
-    amount: 100,
-    date: new Date(2021, 3, 12),
-
-  },
-  {
-    id: 'e2',
-    title: "TV",
-    amount: 10000,
-    date: new Date(2021, 3, 2)
-  },
-  {
-    id: 'e3',
-    title: "Rice",
-    amount: 450,
-    date: new Date(2021, 3, 12)
-  }
-];
-
+import NewExpense from './components/NewExpense/NewExpense';
+import Expenses from './components/Expenses/Expenses';
 
 const App = () => {
-  const [expense, setExpenses] = useState(Intial_Expenses);
+  const expenses = [
+    {
+      id: 'e1',
+      title: 'Toilet Paper',
+      amount: 94.12,
+      date: new Date(2020, 7, 14),
+    },
+    { id: 'e2', title: 'New TV', amount: 799.49, date: new Date(2021, 2, 12) },
+    {
+      id: 'e3',
+      title: 'Car Insurance',
+      amount: 294.67,
+      date: new Date(2021, 2, 28),
+    },
+    {
+      id: 'e4',
+      title: 'New Desk (Wooden)',
+      amount: 450,
+      date: new Date(2021, 5, 12),
+    },
+  ];
 
-  function saveData(data) {
-    const newData = {
-      ...data,
-      id: Math.random().toString()
-    }
-    setExpenses(prevExpenses => {
-      const totalData = [newData, ...prevExpenses];
-      return totalData;
-    });
-
+  const addExpenseHandler = expense => {
+    console.log('In App.js');
+    console.log(expense);
   };
 
+
   return (
-    <Card className='expenses'>
-      <ExpenseForm onSaveData={saveData} />
-
-      {expense.map(index => (
-
-        <ExpenseItem amount={index.amount} title={index.title} key={index.id} date={index.date} />
-
-      ))}
-
-    </Card>
+    <div>
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expenses items={expenses} />
+    </div>
   );
 }
 
